@@ -1,4 +1,5 @@
 package app.gui;
+
 import app.utility.FontLoader;
 import app.utility.ResourcePath;
 
@@ -23,7 +24,7 @@ public class RoundLabel extends JLabel {
         setForeground(Color.WHITE); // Default font color
         setBackground(Color.BLACK); // Default background color
         try {
-            Font pixelFont = FontLoader.loadFont(ResourcePath.PIXEL,25f);
+            Font pixelFont = FontLoader.loadFont(ResourcePath.PIXEL, 25f);
             pixelFont = pixelFont.deriveFont(Font.BOLD);
             setFont(pixelFont);
         } catch (IOException | FontFormatException e) {

@@ -5,15 +5,14 @@ import app.logic.Answer;
 import app.logic.Question;
 import app.logic.QuizModel;
 import app.logic.SoundPlayer;
-
 import app.utility.CloseButton;
 import app.utility.OptionColor;
 import app.utility.ResourcePath;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +26,7 @@ public class QuestionPanel extends JPanel {
     private final Timer questionTimer;
     private final JLabel timerLabel;
     private final StrokedLabel questionLabel;
-    private final RoundLabel  option2Label;
+    private final RoundLabel option2Label;
     private final RoundLabel option3Label;
     private final RoundLabel option4Label;
     private RoundLabel selectedLabel;
@@ -55,7 +54,7 @@ public class QuestionPanel extends JPanel {
         // Close Button
         CloseButton closeButton = new CloseButton(parentFrame);
         Dimension size = closeButton.getPreferredSize();
-        closeButton.setBounds( 705, 6, size.width + 10, size.height + 10);
+        closeButton.setBounds(705, 6, size.width + 10, size.height + 10);
         add(closeButton);
 
 
@@ -124,8 +123,7 @@ public class QuestionPanel extends JPanel {
         continueButton.setBounds(585, 413, 85, 31);
         continueButton.customizeFont(25);
         continueButton.addActionListener(e -> {
-            if(selectedLabel!=null)
-            {
+            if (selectedLabel != null) {
                 checkSelectedOption(selectedLabel);
             }
         });
@@ -164,23 +162,16 @@ public class QuestionPanel extends JPanel {
     // Method to check the selected option and handle accordingly
     private void checkSelectedOption(RoundLabel selectedLabel) {
 
-        if(selectedLabel == null)
-        {
+        if (selectedLabel == null) {
             quizModel.recordAnswer(null);
 
-        }
-
-        else
-        {
+        } else {
             quizModel.recordAnswer(labelAnswers.get(selectedLabel));
             Answer answer = labelAnswers.get(selectedLabel);
-            if(answer.correct())
-            {
+            if (answer.correct()) {
                 SoundPlayer.playSound(ResourcePath.SOUND_RIGHT_PATH);
                 selectedLabel.changeBackgroundColor(OptionColor.correctColor);
-            }
-            else
-            {
+            } else {
                 SoundPlayer.playSound(ResourcePath.SOUND_WRONG_PATH);
                 selectedLabel.changeBackgroundColor(OptionColor.wrongColor);
             }
@@ -193,11 +184,11 @@ public class QuestionPanel extends JPanel {
         timer.start();
 
     }
+
     // Method to perform operations with a delay (e.g., reset labels, load next question, switch to score panel)
     private void operationWithDelay() {
 
-        if(selectedLabel != null)
-        {
+        if (selectedLabel != null) {
             selectedLabel.setDefaultColor();
             selectedLabel = null;
         }
@@ -205,7 +196,7 @@ public class QuestionPanel extends JPanel {
         if (quizModel.hasMoreQuestions()) {
             loadNextQuestion();
         } else {
-            parentFrame.switchToScorePanel(quizModel.getAnsweredQuestion(),quizModel.getScore());
+            parentFrame.switchToScorePanel(quizModel.getAnsweredQuestion(), quizModel.getScore());
             //stops question timer to prevent switching to the ScorePanel again. Jesus ...
             questionTimer.stop();
         }

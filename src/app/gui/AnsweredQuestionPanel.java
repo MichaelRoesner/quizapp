@@ -1,20 +1,20 @@
 package app.gui;
 
 
-import javax.swing.JPanel;
-import java.awt.*;
-import javax.swing.JLabel;
+import javax.swing.*;
 import javax.swing.border.LineBorder;
+import java.awt.*;
 
 public class AnsweredQuestionPanel extends JPanel {
 
 
     /**
      * Constructor to create the AnsweredQuestionPanel.
+     *
      * @param questionNumber The number of the question.
-     * @param question The text of the question.
+     * @param question       The text of the question.
      * @param selectedAnswer The answer selected by the user.
-     * @param correctAnswer The correct answer to the question.
+     * @param correctAnswer  The correct answer to the question.
      */
     public AnsweredQuestionPanel(int questionNumber, String question, String selectedAnswer, String correctAnswer) {
         // Set panel properties
@@ -73,6 +73,7 @@ public class AnsweredQuestionPanel extends JPanel {
 
     /**
      * Overrides the getPreferredSize method to specify the preferred size of the panel.
+     *
      * @return The preferred size of the panel.
      */
     @Override

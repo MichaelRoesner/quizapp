@@ -1,7 +1,8 @@
 package app.utility;
 
 import java.awt.*;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 // Utility class for loading and registering a custom font
 public class FontLoader {
