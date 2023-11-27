@@ -7,13 +7,14 @@ import app.logic.Answer;
 import app.logic.Question;
 import app.logic.QuizModel;
 
-import java.awt.EventQueue;
+import java.awt.*;
 import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class MainFrame extends JFrame {
+
 
     // Application entry point
     public static void main(String[] args) {
@@ -40,8 +41,14 @@ public class MainFrame extends JFrame {
 
     // Switch to the WelcomePanel
     public void switchToWelcomePanel() {
+        // Remove other panels before switching
+        removeOtherPanels();
+
+        // Create and set the new content pane
         JPanel welcomePanel = new WelcomePanel(this);
         setContentPane(welcomePanel);
+
+        // Revalidate, repaint, and pack
         revalidate();
         repaint();
         pack();
@@ -64,4 +71,21 @@ public class MainFrame extends JFrame {
         repaint();
         pack();
     }
+
+    /**
+     * Removes any existing panels from the frame before switching to the WelcomePanel.
+     * This ensures a clean transition without accumulating unnecessary components.
+     */
+    private void removeOtherPanels() {
+        // Iterate through components in the frame's content pane
+        Component[] components = getContentPane().getComponents();
+
+        // Remove any JPanel components to maintain a clean transition
+        for (Component component : components) {
+            if (component instanceof JPanel) {
+                remove(component);
+            }
+        }
+    }
 }
+

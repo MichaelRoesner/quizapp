@@ -5,12 +5,15 @@ import app.logic.Answer;
 import app.logic.Question;
 import app.logic.QuizModel;
 import app.logic.SoundPlayer;
+
+import app.utility.CloseButton;
 import app.utility.OptionColor;
 import app.utility.ResourcePath;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,49 +41,23 @@ public class QuestionPanel extends JPanel {
         this.quizModel = quizModel;
         this.selectedLabel = null;
 
-        setBackground(new Color(100, 0, 0));
+        setBackground(new Color(122, 5, 194));
         setLayout(null);
 
         // Components initialization
-        questionLabel = new StrokedLabel("Willkommen", new Color(255, 255, 255), 2);
-        questionLabel.setForeground(new Color(0, 0, 0));
-        questionLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 60));
+        questionLabel = new StrokedLabel("", new Color(0, 0, 0), 1, ResourcePath.PIXEL, 60f);
+        questionLabel.setForeground(new Color(255, 255, 255));
         questionLabel.setBounds(53, 38, 618, 85);
 
         // Add components to the panel
         add(questionLabel);
 
-        // Set the close action
-        JButton closeButton = new JButton("X"){
-            @Override
-            public Dimension getPreferredSize() {
-                Dimension size = super.getPreferredSize();
-                // This will set the preferred size to the width of the text plus some padding.
-                size.setSize(getFontMetrics(getFont()).stringWidth(getText()) + 10, getFontMetrics(getFont()).getHeight() + 4);
-                return size;
-            }
-        };
-
-        // Initialize and configure option labels
-        closeButton.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
-        closeButton.setBackground(Color.GRAY); // Set the background to grey
-        closeButton.setOpaque(true);
-        closeButton.setBorder(null); // No border
-        closeButton.setFocusPainted(false);
-
+        // Close Button
+        CloseButton closeButton = new CloseButton(parentFrame);
         Dimension size = closeButton.getPreferredSize();
-        int width = size.width + 10;
-        int height = size.height + 4;
-
-        closeButton.setBounds(694, 6, width, height);
-
-        // Set the close action
-        closeButton.addActionListener(e -> {
-            SoundPlayer.playSound(ResourcePath.SOUND_CLICK_PATH);
-            mainFrame.switchToWelcomePanel();
-        });
-
+        closeButton.setBounds( 705, 6, size.width + 10, size.height + 10);
         add(closeButton);
+
 
         // Initialize and configure option labels
         option1Label = new RoundLabel("New button");
@@ -143,9 +120,9 @@ public class QuestionPanel extends JPanel {
         });
         add(option4Label);
 
-        RoundButton continueButton = new RoundButton("weiter");
+        RoundButton continueButton = new RoundButton("next");
         continueButton.setBounds(585, 413, 85, 31);
-        continueButton.customizeFont(15);
+        continueButton.customizeFont(25);
         continueButton.addActionListener(e -> {
             if(selectedLabel!=null)
             {
@@ -157,7 +134,7 @@ public class QuestionPanel extends JPanel {
         timerLabel = new JLabel("29");
         timerLabel.setForeground(new Color(255, 255, 255));
         timerLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        timerLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
+        timerLabel.setFont(new Font("Arial", Font.BOLD, 30));
         timerLabel.setBounds(337, 147, 57, 43);
         add(timerLabel);
 
@@ -229,6 +206,8 @@ public class QuestionPanel extends JPanel {
             loadNextQuestion();
         } else {
             parentFrame.switchToScorePanel(quizModel.getAnsweredQuestion(),quizModel.getScore());
+            //stops question timer to prevent switching to the ScorePanel again. Jesus ...
+            questionTimer.stop();
         }
     }
 

@@ -1,13 +1,15 @@
 package app.gui;
+import app.utility.FontLoader;
+import app.utility.ResourcePath;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 /**
  * Custom JLabel class that renders a round label with customizable appearance.
  */
 public class RoundLabel extends JLabel {
-
     private Color borderColor; // Field to keep track of the current border color
 
     /**
@@ -20,7 +22,13 @@ public class RoundLabel extends JLabel {
         borderColor = Color.WHITE; // Default border color
         setForeground(Color.WHITE); // Default font color
         setBackground(Color.BLACK); // Default background color
-        setFont(new Font("Comic Sans MS", Font.BOLD, 10)); // Set initial font size to 10
+        try {
+            Font pixelFont = FontLoader.loadFont(ResourcePath.PIXEL,25f);
+            pixelFont = pixelFont.deriveFont(Font.BOLD);
+            setFont(pixelFont);
+        } catch (IOException | FontFormatException e) {
+            throw new RuntimeException(e);
+        }
         setHorizontalAlignment(SwingConstants.CENTER); // Center the text
         setOpaque(false);
     }
@@ -101,5 +109,27 @@ public class RoundLabel extends JLabel {
         setBackground(Color.BLACK);
         borderColor = Color.WHITE; // Change the border color to match the background
         repaint(); // Repaint the button to show the new color
+    }
+
+    /**
+     * Method to adjust the font size dynamically based on the label's size.
+     */
+    public void adjustFontSize() {
+        Font currentFont = getFont();
+        float maxWidth = getWidth() * 0.8f;
+        float maxHeight = getHeight() * 0.8f;
+
+        // Calculate the maximum font size that fits within the label
+        float fontSize = Math.min(maxWidth / getFontMetrics(currentFont).stringWidth(getText()),
+                maxHeight / currentFont.getSize());
+
+        // Create a new font with the adjusted size
+        Font newFont = currentFont.deriveFont(Font.BOLD, fontSize);
+
+        // Set the new font to the label
+        setFont(newFont);
+
+        // Repaint the label
+        repaint();
     }
 }

@@ -1,13 +1,18 @@
 package app.gui;
 
+import app.utility.FontLoader;
+import app.utility.ResourcePath;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
+import java.io.IOException;
 
 /**
  * Custom JButton class that renders a round button with customizable appearance.
  */
 public class RoundButton extends JButton {
+    Font pixelFont;
 
     private final Color borderColor; // Field to keep track of the current border color
 
@@ -21,7 +26,12 @@ public class RoundButton extends JButton {
         borderColor = Color.WHITE; // Default border color
         setForeground(Color.WHITE); // Default font color
         setBackground(Color.BLACK); // Default background color
-        setFont(new Font("Comic Sans MS", Font.BOLD, 18)); // Default font
+        try {
+            pixelFont = FontLoader.loadFont(ResourcePath.PIXEL, 40f);
+        } catch (IOException | FontFormatException e) {
+            throw new RuntimeException(e);
+        }
+        setFont(pixelFont);
         setFocusPainted(false);
         setBorderPainted(false);
         setContentAreaFilled(false);

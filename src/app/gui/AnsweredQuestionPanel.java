@@ -1,14 +1,13 @@
 package app.gui;
 
-import javax.swing.JPanel;
-import java.awt.Color;
-import java.awt.Dimension;
 
+import javax.swing.JPanel;
+import java.awt.*;
 import javax.swing.JLabel;
-import java.awt.Font;
 import javax.swing.border.LineBorder;
 
 public class AnsweredQuestionPanel extends JPanel {
+
 
     /**
      * Constructor to create the AnsweredQuestionPanel.
@@ -25,43 +24,49 @@ public class AnsweredQuestionPanel extends JPanel {
 
         // Label for displaying question number
         JLabel questionNLable = new JLabel("Question " + questionNumber);
+        questionNLable.setFont(new Font("Arial", Font.BOLD, 20));
         questionNLable.setForeground(new Color(255, 255, 255)); // White text
-        questionNLable.setFont(new Font("Comic Sans MS", Font.BOLD, 18)); // Font style
+
         questionNLable.setBounds(28, 10, 114, 37); // Position
         add(questionNLable);
 
         // Label for displaying "Selected Answer"
         JLabel lblSelected = new JLabel("Selected Answer: ");
+        lblSelected.setFont(new Font("Arial", Font.BOLD, 15));
         lblSelected.setForeground(Color.WHITE); // White text
-        lblSelected.setFont(new Font("Comic Sans MS", Font.BOLD, 16)); // Font style
+
         lblSelected.setBounds(28, 57, 157, 37); // Position
         add(lblSelected);
 
         // Label for displaying "Correct Answer"
         JLabel lblCorrectAnswer = new JLabel("Correct Answer: ");
+        lblCorrectAnswer.setFont(new Font("Arial", Font.BOLD, 15));
         lblCorrectAnswer.setForeground(Color.WHITE); // White text
-        lblCorrectAnswer.setFont(new Font("Comic Sans MS", Font.BOLD, 16)); // Font style
+
         lblCorrectAnswer.setBounds(28, 111, 142, 37); // Position
         add(lblCorrectAnswer);
 
         // Label for displaying the question text
         JLabel questionLabel = new JLabel(question);
+        questionLabel.setFont(new Font("Arial", Font.BOLD, 20));
         questionLabel.setForeground(Color.WHITE); // White text
-        questionLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 18)); // Font style
+
         questionLabel.setBounds(182, 10, 442, 37); // Position
         add(questionLabel);
 
         // Label for displaying the selected answer
         JLabel selectedLabel = new JLabel(selectedAnswer);
+        selectedLabel.setFont(new Font("Arial", Font.BOLD, 15));
         selectedLabel.setForeground(Color.WHITE); // White text
-        selectedLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 16)); // Font style
+
         selectedLabel.setBounds(182, 57, 442, 37); // Position
         add(selectedLabel);
 
         // Label for displaying the correct answer
         JLabel correctLabel = new JLabel(correctAnswer);
+        correctLabel.setFont(new Font("Arial", Font.BOLD, 15));
         correctLabel.setForeground(Color.WHITE); // White text
-        correctLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 16)); // Font style
+
         correctLabel.setBounds(182, 111, 442, 37); // Position
         add(correctLabel);
     }
