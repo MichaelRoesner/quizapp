@@ -52,14 +52,15 @@ public class ScorePanel extends JPanel {
         int questionNumber = 1;
         // Add individual panels to the container panel
 
-        for (Question question : answeredQuestion.keySet()) {
-            String questionText = question.question();
+        for(Question question: answeredQuestion.keySet())
+        {
+            String questionText = question.getQuestion();
             String correctAnswer = question.getCorrectAnswer();
             Answer answer = answeredQuestion.get(question);
 
             String selectedAnswer = "No Option Selected";
-            if (answer != null)
-                selectedAnswer = answer.text();
+            if(answer!=null)
+                selectedAnswer = answer.getText();
             AnsweredQuestionPanel panel = new AnsweredQuestionPanel(questionNumber, questionText, selectedAnswer, correctAnswer);
             containerPanel.add(panel);
             questionNumber++;
