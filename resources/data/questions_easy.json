@@ -1,0 +1,86 @@
+[
+  {
+    "question": "What is an IP address?",
+    "answers": [
+      {
+        "answer": "An IP address is a unique identification for an internet browser.",
+        "correct": false
+      },
+      {
+        "answer": "An IP address is a way to connect with social media.",
+        "correct": false
+      },
+      {
+        "answer": "An IP address is a location for files on your computer.",
+        "correct": false
+      },
+      {
+        "answer": "An IP address is a numerical identifier assigned to computers in a network to identify and communicate with them.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "What is HTML?",
+    "answers": [
+      {
+        "answer": "HTML stands for Hyper Text Markup Language and is a programming language.",
+        "correct": false
+      },
+      {
+        "answer": "HTML is a famous rock band from the 1970s.",
+        "correct": false
+      },
+      {
+        "answer": "HTML is a standard markup language for creating web pages.",
+        "correct": true
+      },
+      {
+        "answer": "HTML is the name of a popular video game.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What is Java?",
+    "answers": [
+      {
+        "answer": "Java is a type of coffee.",
+        "correct": false
+      },
+      {
+        "answer": "Java is an island in Indonesia.",
+        "correct": false
+      },
+      {
+        "answer": "Java is a programming language known for its portability and versatility.",
+        "correct": true
+      },
+      {
+        "answer": "Java is a brand of smartphones.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What is ASDASDASD?",
+    "answers": [
+      {
+        "answer": "Java is a type of coffee.",
+        "correct": false
+      },
+      {
+        "answer": "Java is an island in Indonesia.",
+        "correct": false
+      },
+      {
+        "answer": "Java is a programming language known for its portability and versatility.",
+        "correct": true
+      },
+      {
+        "answer": "Java is a brand of smartphones.",
+        "correct": false
+      }
+    ]
+  }
+]
