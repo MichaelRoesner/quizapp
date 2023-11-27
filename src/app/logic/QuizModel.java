@@ -29,12 +29,10 @@ public class QuizModel {
 
     // Method to record an answer for the current question
     public void recordAnswer(Answer answer) {
-        if (answer != null) {
-            if (answer.correct()) {
+        if(answer!=null)
+            if (answer.isCorrect())
                 score++;
-            }
-            answeredQuestion.put(questions.get(currentQuestionIndex - 1), answer);
-        }
+        answeredQuestion.put(questions.get(currentQuestionIndex-1), answer);
     }
 
     // Method to get the current score
@@ -51,7 +49,6 @@ public class QuizModel {
     public void resetQuiz() {
         currentQuestionIndex = 0;
         score = 0;
-        answeredQuestion.clear();
     }
 
     // Method to get the time allocated per question

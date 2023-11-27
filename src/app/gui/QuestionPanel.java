@@ -162,16 +162,23 @@ public class QuestionPanel extends JPanel {
     // Method to check the selected option and handle accordingly
     private void checkSelectedOption(RoundLabel selectedLabel) {
 
-        if (selectedLabel == null) {
+        if(selectedLabel == null)
+        {
             quizModel.recordAnswer(null);
 
-        } else {
+        }
+
+        else
+        {
             quizModel.recordAnswer(labelAnswers.get(selectedLabel));
             Answer answer = labelAnswers.get(selectedLabel);
-            if (answer.correct()) {
+            if(answer.isCorrect())
+            {
                 SoundPlayer.playSound(ResourcePath.SOUND_RIGHT_PATH);
                 selectedLabel.changeBackgroundColor(OptionColor.correctColor);
-            } else {
+            }
+            else
+            {
                 SoundPlayer.playSound(ResourcePath.SOUND_WRONG_PATH);
                 selectedLabel.changeBackgroundColor(OptionColor.wrongColor);
             }
@@ -210,25 +217,25 @@ public class QuestionPanel extends JPanel {
             // Update components with question details
 
             // Set the question text and adjust label font size
-            questionLabel.setText(currentQuestion.question());
+            questionLabel.setText(currentQuestion.getQuestion());
             questionLabel.adjustLabelFontSize();
 
             // Populate option labels with answer text and associate answers with labels
-            Answer answer = currentQuestion.answers().get(0);
-            option1Label.setText(answer.text());
+            Answer answer = currentQuestion.getAnswers().get(0);
+            option1Label.setText(answer.getText());
             labelAnswers.put(option1Label, answer);
 
-            answer = currentQuestion.answers().get(1);
-            option2Label.setText(answer.text());
+            answer = currentQuestion.getAnswers().get(1);
+            option2Label.setText(answer.getText());
             labelAnswers.put(option2Label, answer);
 
 
-            answer = currentQuestion.answers().get(2);
+            answer = currentQuestion.getAnswers().get(2);
 
-            option3Label.setText(answer.text());
+            option3Label.setText(answer.getText());
             labelAnswers.put(option3Label, answer);
-            answer = currentQuestion.answers().get(3);
-            option4Label.setText(answer.text());
+            answer = currentQuestion.getAnswers().get(3);
+            option4Label.setText(answer.getText());
             labelAnswers.put(option4Label, answer);
 
             // Reset the timer label
