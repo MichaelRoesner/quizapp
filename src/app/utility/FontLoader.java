@@ -4,13 +4,13 @@ import java.awt.*;
 import java.io.*;
 
 // Utility class for loading and registering a custom font
-public class FontController {
+public class FontLoader {
     private static Font customFont;
 
     // Method to load a custom font from the specified path and set its size
-    public static Font loadFont(String path) throws IOException, FontFormatException {
+    public static Font loadFont(String path, float fontSize) throws IOException, FontFormatException {
         customFont = Font.createFont(Font.TRUETYPE_FONT, new File(path));
-        customFont = customFont.deriveFont(40f); // Set the font size to 40 points (adjust as needed)
+        customFont = customFont.deriveFont(fontSize); // Set the font size to 40 points
         registerFont(); // Register the loaded font
         return customFont; // Return the loaded font
     }

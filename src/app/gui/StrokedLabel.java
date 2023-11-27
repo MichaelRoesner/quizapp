@@ -1,23 +1,36 @@
 package app.gui;
 
+import app.utility.FontLoader;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.font.FontRenderContext;
 import java.awt.font.TextLayout;
 import java.awt.geom.AffineTransform;
+import java.io.IOException;
 
 public class StrokedLabel extends JLabel {
     private final Color strokeColor;
     private final int strokeThickness;
 
+
     // Constructor
-    public StrokedLabel(String text, Color strokeColor, int strokeThickness) {
+    public StrokedLabel(String text, Color strokeColor, int strokeThickness, String fontPath, float fontSize) {
         super(text);
         this.strokeColor = strokeColor;
         this.strokeThickness = strokeThickness;
-        setFont(new Font("Comic Sans MS", Font.BOLD, 30));
+        Font customFont;
+        try {
+            customFont = FontLoader.loadFont(fontPath, fontSize);
+        } catch (IOException | FontFormatException e) {
+            throw new RuntimeException(e);
+        }
+        setFont(customFont);
+
+
         setForeground(Color.WHITE);
     }
+
 
     // Override paintComponent to customize rendering
     @Override

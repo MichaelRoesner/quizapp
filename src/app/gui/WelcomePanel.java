@@ -1,67 +1,43 @@
 package app.gui;
 
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
+import javax.swing.*;
+import java.awt.*;
 
 import app.MainFrame;
 import app.data.QuizDataLoader;
 import app.logic.DifficultyLevel;
 import app.logic.QuizModel;
 import app.logic.SoundPlayer;
+
+import app.utility.CloseButton;
 import app.utility.ResourcePath;
+
+
 
 public class WelcomePanel extends JPanel {
 
     private final MainFrame parentFrame;
+
 
     /**
      * Create the panel.
      */
     public WelcomePanel(MainFrame mainFrame) {
         this.parentFrame = mainFrame;
-        setBackground(new Color(75, 0, 130));
+        setBackground(new Color(122, 5, 194));
         setLayout(null);
 
+
         // Close Button
-        JButton closeButton = new JButton("X"){
-            @Override
-            public Dimension getPreferredSize() {
-                Dimension size = super.getPreferredSize();
-                // Set the preferred size to the width of the text plus some padding.
-                size.setSize(getFontMetrics(getFont()).stringWidth(getText()) + 10, getFontMetrics(getFont()).getHeight() + 4);
-                return size;
-            }
-        };
-        closeButton.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
-        closeButton.setBackground(Color.GRAY); // Set the background to grey
-        closeButton.setOpaque(true);
-        closeButton.setBorder(null); // No border
-        closeButton.setFocusPainted(false);
-
+        CloseButton closeButton = new CloseButton(null);
         Dimension size = closeButton.getPreferredSize();
-        int width = size.width + 10;
-        int height = size.height + 4;
-
-        closeButton.setBounds(620, 6, width, height);
-
-        // Set the close action
-        closeButton.addActionListener(e -> {
-            SoundPlayer.playSound(ResourcePath.SOUND_CLICK_PATH);
-            parentFrame.dispose();
-        });
-
+        closeButton.setBounds( 630, 6, size.width + 10, size.height + 10);
         add(closeButton);
 
         // Welcome Label
-        StrokedLabel welcomeLabel = new StrokedLabel("Willkommen", new Color(255, 255, 255), 2);
-        welcomeLabel.setForeground(new Color(0, 0, 0));
-        welcomeLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 60));
-        welcomeLabel.setBounds(146, 33, 396, 138);
+        StrokedLabel welcomeLabel = new StrokedLabel("Dark IT-Quiz", new Color(0, 0, 0), 2, ResourcePath.CRUISER, 40f);  //welcomeLabel.setForeground(new Color(255, 255, 255));
+        welcomeLabel.setBounds(146, 50, 396, 138);
         add(welcomeLabel);
 
         // Difficulty selection buttons
@@ -96,10 +72,13 @@ public class WelcomePanel extends JPanel {
         add(hardDifficultyButton);
     }
 
+
     @Override
     public Dimension getPreferredSize() {
         // Return the preferred size of the panel
-        return new Dimension(655, 436);
+        int WIDTH = 655;
+        int HEIGHT = 436;
+        return new Dimension(WIDTH, HEIGHT);
     }
 
     // Helper method to get time per question based on difficulty
