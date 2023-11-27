@@ -1,18 +1,16 @@
 package app.gui;
 
 
-import javax.swing.*;
-import java.awt.*;
-
 import app.MainFrame;
 import app.data.QuizDataLoader;
 import app.logic.DifficultyLevel;
 import app.logic.QuizModel;
 import app.logic.SoundPlayer;
-
 import app.utility.CloseButton;
 import app.utility.ResourcePath;
 
+import javax.swing.*;
+import java.awt.*;
 
 
 public class WelcomePanel extends JPanel {
@@ -32,7 +30,7 @@ public class WelcomePanel extends JPanel {
         // Close Button
         CloseButton closeButton = new CloseButton(null);
         Dimension size = closeButton.getPreferredSize();
-        closeButton.setBounds( 630, 6, size.width + 10, size.height + 10);
+        closeButton.setBounds(630, 6, size.width + 10, size.height + 10);
         add(closeButton);
 
         // Welcome Label

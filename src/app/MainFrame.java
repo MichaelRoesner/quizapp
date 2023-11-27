@@ -7,11 +7,9 @@ import app.logic.Answer;
 import app.logic.Question;
 import app.logic.QuizModel;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.Map;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class MainFrame extends JFrame {
 

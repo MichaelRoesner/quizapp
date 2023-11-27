@@ -19,7 +19,6 @@ public class ResourcePath {
     public static final String PIXEL = "resources/fonts/advanced_pixel-7.ttf";
 
 
-
     // Private constructor to prevent instantiation
     private ResourcePath() {
         // This constructor is empty to prevent instantiation of the utility class

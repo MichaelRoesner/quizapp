@@ -1,11 +1,10 @@
 package app.utility;
 
-import javax.swing.*;
-import java.awt.*;
-
 import app.MainFrame;
 import app.logic.SoundPlayer;
-import app.utility.ResourcePath;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class CloseButton extends JButton {
 
@@ -14,7 +13,7 @@ public class CloseButton extends JButton {
     public CloseButton(MainFrame parentFrame) {
         super("X");
         this.parentFrame = parentFrame;
-        
+
         init();
     }
 
@@ -27,12 +26,11 @@ public class CloseButton extends JButton {
 
         addActionListener(e -> {
             SoundPlayer.playSound(ResourcePath.SOUND_CLICK_PATH);
-            if(parentFrame == null) {
+            if (parentFrame == null) {
                 SwingUtilities.getWindowAncestor(this).dispose();
             } else {
                 parentFrame.switchToWelcomePanel();
             }
-
 
 
         });

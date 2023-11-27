@@ -3,10 +3,10 @@ package app.gui;
 import app.MainFrame;
 import app.logic.Answer;
 import app.logic.Question;
-import app.logic.QuizModel;
 import app.logic.SoundPlayer;
 import app.utility.CloseButton;
 import app.utility.ResourcePath;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Map;
@@ -27,7 +27,7 @@ public class ScorePanel extends JPanel {
         closeButton.setBounds(654, 6, size.width + 10, size.height + 10);
         add(closeButton);
 
-        StrokedLabel lblNewLabel = new StrokedLabel("Quiz Result",new Color(255, 255, 255), 2, ResourcePath.PIXEL, 40f);
+        StrokedLabel lblNewLabel = new StrokedLabel("Quiz Result", new Color(255, 255, 255), 2, ResourcePath.PIXEL, 40f);
         lblNewLabel.setText("Quiz Results");
         //lblNewLabel.setForeground(new Color(0, 0, 0));
         lblNewLabel.setBounds(10, 6, 153, 34);
@@ -39,7 +39,7 @@ public class ScorePanel extends JPanel {
         lblNewLabel_1.setBounds(605, 44, 64, 27);
         add(lblNewLabel_1);
 
-        JLabel scoreLabel = new JLabel(score+"/"+answeredQuestion.size());
+        JLabel scoreLabel = new JLabel(score + "/" + answeredQuestion.size());
         scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
         scoreLabel.setForeground(new Color(128, 255, 255));
         scoreLabel.setFont(new Font("Arial", Font.BOLD, 15));
@@ -52,14 +52,13 @@ public class ScorePanel extends JPanel {
         int questionNumber = 1;
         // Add individual panels to the container panel
 
-        for(Question question: answeredQuestion.keySet())
-        {
+        for (Question question : answeredQuestion.keySet()) {
             String questionText = question.question();
             String correctAnswer = question.getCorrectAnswer();
             Answer answer = answeredQuestion.get(question);
 
             String selectedAnswer = "No Option Selected";
-            if(answer!=null)
+            if (answer != null)
                 selectedAnswer = answer.text();
             AnsweredQuestionPanel panel = new AnsweredQuestionPanel(questionNumber, questionText, selectedAnswer, correctAnswer);
             containerPanel.add(panel);
@@ -72,7 +71,7 @@ public class ScorePanel extends JPanel {
 
         add(scrollPane);
 
-        if(score == answeredQuestion.size()) {
+        if (score == answeredQuestion.size()) {
             SoundPlayer.playSound(ResourcePath.SOUND_WIN_PATH);
         } else {
             SoundPlayer.playSound(ResourcePath.SOUND_LOSE_PATH);
