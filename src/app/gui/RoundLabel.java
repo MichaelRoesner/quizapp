@@ -112,25 +112,4 @@ public class RoundLabel extends JLabel {
         repaint(); // Repaint the button to show the new color
     }
 
-    /**
-     * Method to adjust the font size dynamically based on the label's size.
-     */
-    public void adjustFontSize() {
-        Font currentFont = getFont();
-        float maxWidth = getWidth() * 0.8f;
-        float maxHeight = getHeight() * 0.8f;
-
-        // Calculate the maximum font size that fits within the label
-        float fontSize = Math.min(maxWidth / getFontMetrics(currentFont).stringWidth(getText()),
-                maxHeight / currentFont.getSize());
-
-        // Create a new font with the adjusted size
-        Font newFont = currentFont.deriveFont(Font.BOLD, fontSize);
-
-        // Set the new font to the label
-        setFont(newFont);
-
-        // Repaint the label
-        repaint();
-    }
 }
